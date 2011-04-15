@@ -7,6 +7,7 @@ module Alignment(Alignment
                  , parseFullCorpus
                  , alignmentRow
                  , alignmentColumn
+                 , printAlignment
 ) where
 
 type Alignment = [(Int, Int)]
@@ -42,3 +43,6 @@ alignmentRow a r = filter (\x -> snd x == r) a
 
 alignmentColumn :: Alignment -> Int -> Alignment
 alignmentColumn a c = filter (\x -> fst x == c) a
+
+printAlignment :: Alignment -> String
+printAlignment = foldr (\(x, y) s -> show x ++ "-" ++ show y ++ " " ++ s) ""
